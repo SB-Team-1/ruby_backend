@@ -10,6 +10,4 @@ Rails.application.routes.draw do
 
   post '/subscribe/:business_id/', to: 'user_alliances#subscribe'
 
-
-  # made a changeß
 end
