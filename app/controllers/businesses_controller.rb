@@ -17,7 +17,7 @@ class BusinessesController < ApplicationController
   # POST /businesses
   def create
     @business = Business.new(business_params)
-
+    
     if @business.save
       render json: @business, status: :created, location: @business
     else
@@ -47,6 +47,6 @@ class BusinessesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def business_params
-      params.require(:business).permit(:name, :address, :description, :website_url, :phone_number, :logo_url, :user_id, :category)
+      params.require(:business).permit(:name, :address, :description, :website_url, :phone_number, :logo_url, :user_id, :category, :alliance_id)
     end
 end
