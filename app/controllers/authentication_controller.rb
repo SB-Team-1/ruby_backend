@@ -6,7 +6,6 @@ class AuthenticationController < ApplicationController
     
     if @user.authenticate(login_params[:password])
       @token = encode({id: @user.id})
-      p @user
       render json: {
         user: @user.attributes.except("password_digest"),
         token: @token
