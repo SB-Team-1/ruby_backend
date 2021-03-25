@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy, :getMyAlliances, :getMyBusinesses]
   before_action :authorize_request, except: :create
 
   # GET /users
@@ -42,6 +42,28 @@ class UsersController < ApplicationController
   def destroy
     @user.destroy
   end
+
+  def getMyAlliances
+    @alliances = UserAlliances.find(:all, :conditions => {:user_id => @user.id})
+
+    if @alliances
+      render json: @alliances, include: :alliance
+    else 
+      render json: @alliances.errors, status: :unprocessable_entity
+    end
+  end
+  
+  def getMyBusinesses
+    @businesses = Business.find(:all, :conditions => {:user_id => @user.id})
+    
+    if @businesses 
+      render json: @businesses
+    else
+      render json: @businesses.errors, status: :unprocessable_entity
+    end
+
+  end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

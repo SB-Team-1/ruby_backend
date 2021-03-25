@@ -9,7 +9,8 @@ Rails.application.routes.draw do
   get '/auth/verify', to: 'authentication#verify'
 
   post '/subscribe/:business_id/', to: 'user_alliances#subscribe'
-
+  get '/users/:id/businesses', to: 'users#getMyBusinesses'
+  get '/users/:id/alliances', to: 'users#getMyAlliances'
 
   # made a change
 end

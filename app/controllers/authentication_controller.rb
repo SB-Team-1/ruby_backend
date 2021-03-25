@@ -8,7 +8,7 @@ class AuthenticationController < ApplicationController
       @token = encode({id: @user.id})
       p @user
       render json: {
-        user: @user.attributes.except("password_digest"), include: [:alliances, :businesses],
+        user: @user.attributes.except("password_digest")
         token: @token
       }, status: :ok
     else
