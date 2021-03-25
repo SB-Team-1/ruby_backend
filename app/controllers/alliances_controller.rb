@@ -1,6 +1,6 @@
 class AlliancesController < ApplicationController
   before_action :set_alliance, only: [:show, :update, :destroy]
-  before_action :authorize_request
+  before_action :authorize_request, only: [:create, :update, :destroy]
 
   # GET /alliances
   def index
