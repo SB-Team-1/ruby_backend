@@ -39,6 +39,17 @@ class AlliancesController < ApplicationController
     @alliance.destroy
   end
 
+  def join 
+    @business = Business.find(params[:business_id])
+    @business.alliance.push(Alliance.find(params[:alliance_id]))
+
+    if @join.save
+      render json: @join, status: :created, location: @join
+    else
+      render json: @join.errors, status: :unprocessable_entity
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_alliance

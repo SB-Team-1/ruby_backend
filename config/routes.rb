@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   get '/users/:id/businesses', to: 'users#getMyBusinesses'
   get '/users/:id/alliances', to: 'users#getMyAlliances'
 
-  # made a change
+  post '/join/:business_id/:alliance_id', to: 'alliances#join'
+
 end
