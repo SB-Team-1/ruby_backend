@@ -1,6 +1,6 @@
 class Business < ApplicationRecord
   # has_secure_password
-  # belongs_to :alliance
+  has_one :alliance
   belongs_to :user
   # validates :name, presence: true,
   # validates :email, presence: true, uniqueness: true

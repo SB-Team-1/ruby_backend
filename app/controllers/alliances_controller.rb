@@ -41,8 +41,8 @@ class AlliancesController < ApplicationController
 
   def join 
     @business = Business.find(params[:business_id])
-    # @alliance = Alliance.find(params[:alliance_id])
-    @business.alliance_id = params[:alliance_id]
+    @alliance = Alliance.find(params[:alliance_id])
+    @business.alliance = @alliance
 
     if @business.save
     render json: @business
