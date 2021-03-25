@@ -44,7 +44,7 @@ class UsersController < ApplicationController
   end
 
   def getMyAlliances
-    @alliances = UserAlliances.find(:all, :conditions => {:user_id => @user.id})
+    @alliances = UserAlliances.where(user_id: @user.id)
 
     if @alliances
       render json: @alliances, include: :alliance
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   end
   
   def getMyBusinesses
-    @businesses = Business.find(:all, :conditions => {:user_id => @user.id})
+    @businesses = Business.where(user_id: @user.id)
     
     if @businesses 
       render json: @businesses
