@@ -41,13 +41,15 @@ class AlliancesController < ApplicationController
 
   def join 
     @business = Business.find(params[:business_id])
-    @business.alliance.push(Alliance.find(params[:alliance_id]))
+    @alliance = Alliance.find(params[:alliance_id])
+    @business.alliance = @alliance
 
-    if @join.save
-      render json: @join, status: :created, location: @join
+    if @business.save
+    render json: @business
     else
-      render json: @join.errors, status: :unprocessable_entity
+      render json @business.errors, status: :unprocessable_entity
     end
+
   end
 
   private
@@ -58,6 +60,6 @@ class AlliancesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def alliance_params
-      params.require(:alliance).permit(:name, :location)
+      params.require(:alliance).permit(:name, :location, :description, :slogan)
     end
 end
