@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
   has_many :alliances, through: :user_alliances
+  has_many :businesses
   
 
   validates :firstname, presence: true

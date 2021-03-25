@@ -7,7 +7,7 @@ class AuthenticationController < ApplicationController
     if @user.authenticate(login_params[:password])
       @token = encode({id: @user.id})
       render json: {
-        user: @user.attributes.except("password_digest"),
+        user: @user.attributes.except("password_digest"), include: [:alliances, :businesses],
         token: @token
       }, status: :ok
     else
